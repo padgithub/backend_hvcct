@@ -26,6 +26,8 @@ class QuestionService {
                 ->where('questions.app_id', '!=', '')
                 ->whereIn('questions.id', $explode)
                 ->select('questions.id', 'apps.name as app_name', 'questions.details', 'questions.a', 'questions.b', 'questions.c', 'questions.d', 'questions.answer')
+                ->order_by('random()')
+                ->limit(20)
                 ->get()->toArray();
         }
         return DB::table('questions')
