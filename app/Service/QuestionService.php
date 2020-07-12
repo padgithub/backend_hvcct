@@ -25,13 +25,14 @@ class QuestionService {
                 ->leftJoin('apps', 'questions.app_id', '=', 'apps.id')
                 ->where('questions.app_id', '!=', '')
                 ->whereIn('questions.id', $explode)
-                ->select('questions.id', 'apps.name as app_name', 'questions.details', 'questions.a', 'questions.b', 'questions.c', 'questions.d', 'questions.answer')
                 ->limit(20)
+                ->select('questions.id', 'apps.name as app_name', 'questions.details', 'questions.a', 'questions.b', 'questions.c', 'questions.d', 'questions.answer')
                 ->get()->toArray();
         }
         return DB::table('questions')
             ->leftJoin('apps', 'questions.app_id', '=', 'apps.id')
             ->where('questions.app_id', '!=', '')
+            ->limit(20)
             ->select('questions.id', 'apps.name as app_name', 'questions.details', 'questions.a', 'questions.b', 'questions.c', 'questions.d', 'questions.answer')
             ->get()->toArray();
 
