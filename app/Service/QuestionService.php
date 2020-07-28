@@ -24,11 +24,9 @@ class QuestionService {
             return DB::table('questions')
                 ->leftJoin('apps', 'questions.app_id', '=', 'apps.id')
                 ->where('questions.app_id', '!=', '')
-                ->limit(20)
                 ->whereIn('questions.id', $explode)
                 ->select('questions.id', 'apps.name as app_name', 'questions.details', 'questions.a', 'questions.b', 'questions.c', 'questions.d', 'questions.answer')
                 ->inRandomOrder()
-                ->limit(20)
                 ->get()->toArray();
         }
         return DB::table('questions')
