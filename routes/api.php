@@ -16,6 +16,7 @@ Route::middleware('jwt')->group(function() {
         Route::resource('info_users', 'UserController');
         Route::resource('info_apps', 'AppController');
         Route::resource('info_scores', 'ScoreController');
+        Route::get('info_questions/get_random_question', 'QuestionController@randomQuesttion');
         Route::resource('info_questions', 'QuestionController');
         Route::resource('info_wins', 'WinController');
 

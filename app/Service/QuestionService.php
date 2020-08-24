@@ -77,4 +77,16 @@ class QuestionService {
         $question = Questions::findOrFail($id);
         return $question->delete();
     }
+
+    public function randomQuestion() {
+        return DB::table('questions')
+            ->leftJoin('apps', 'questions.app_id', '=', 'apps.id')
+            ->where('questions.app_id', '!=', '')
+            ->select('questions.id', 'apps.name as app_name', 'questions.details', 'questions.a', 'questions.b', 'questions.c', 'questions.d', 'questions.answer')
+            ->inRandomOrder()
+            ->limit(20)
+            ->get()->toArray();
+
+        return $this->dataTablePaginate->scopeDataTablePaginate($query);
+    }
 }

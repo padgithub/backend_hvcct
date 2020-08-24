@@ -71,4 +71,8 @@ class QuestionController extends Controller
         return $this->respondSuccess(Excel::import(new ImportQuestions, request()->file('file')));
     }
 
+    public function randomQuesttion() {
+        return $this->respondSuccess($this->questionService->randomQuestion());
+    }
+
 }
