@@ -23,7 +23,9 @@ class NotifyService {
                 $instanceId = env('INSTANCE_ID_ENGLISH');
                 $secretKey = env('SECRET_KEY_ENGLISH');
                 break;
-
+            case 'Nhanh Như Sét':
+                $instanceId = env('INSTANCE_ID_NNS');
+                $secretKey = env('SECRET_KEY_NNS');
             default:
                 break;
         }
