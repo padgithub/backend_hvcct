@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::namespace('Api')->group(function() {
+    Route::get('info_questions/get_random_question', 'QuestionController@randomQuesttion');
+});
+
 Route::middleware('jwt')->group(function() {
 
     # Folder Auth
@@ -16,7 +20,6 @@ Route::middleware('jwt')->group(function() {
         Route::resource('info_users', 'UserController');
         Route::resource('info_apps', 'AppController');
         Route::resource('info_scores', 'ScoreController');
-        Route::get('info_questions/get_random_question', 'QuestionController@randomQuesttion');
         Route::resource('info_questions', 'QuestionController');
         Route::resource('info_wins', 'WinController');
 
@@ -46,7 +49,6 @@ Route::namespace('Auth')->group(function() {
 Route::namespace('Api')->group(function() {
     #App
     Route::post('login', 'RequestController@updateApp');
-
 
     Route::get('info_app', 'RequestController@infoApp');
     Route::get('info_question/{app_id}', 'RequestController@infoQuestion');
