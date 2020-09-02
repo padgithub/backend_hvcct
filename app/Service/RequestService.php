@@ -242,15 +242,17 @@ class RequestService {
         if ($score_id) {
             $data           = Scores::findOrFail($score_id);
             $max_score = $data->point;
+            $max_play_time = $data->play_times;
             if ($score > $data->point) {
                 $max_score = $score;
+                $max_play_time = $play_times;
             }
             $input = [
                 'id'        => $score_id,
                 'user_id'   => $user_id,
                 'app_id'    => $app_id,
                 'point'     => $max_score,
-                'play_times'=> $play_times,
+                'play_times'=> $max_play_time,
                 'updated_at'=> date('Y-m-d H:i:s'),
             ];
             $data->update($input);
